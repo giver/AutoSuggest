@@ -14,7 +14,7 @@ the fly. It supports keybord navigation (UP + DOWN + RETURN), as well
 as multiple AutoSuggest fields on the same page.
 
 Inspied by the Autocomplete plugin by: J�rn Zaefferer
-and the Facelist plugin by: Ian Tearle (iantearle.com)
+and the Facelist plugin by: Ian Tearle ([iantearle.com](iantearle.com))
 
 This AutoSuggest jQuery plug-in is dual licensed under the MIT and GPL licenses:
 [http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)
@@ -46,12 +46,12 @@ Options
 * **selectionAdded**: callback function - Custom function that is run when a selection is made by choosing one from the Results dropdown, or by using the tab/comma keys to add one. The selection item is passed into this callback function as 'elem'.
       Example: selectionAdded: function(elem){ elem.fadeTo("slow", 0.33); }
 * **selectionRemoved**: callback function - Custom function that is run when a selection removed from the AutoSuggest by using the delete key or by clicking the "x" inside the selection. The selection item is passed into this callback function as 'elem'.
-      <pre>Example: selectionRemoved: function(elem){ elem.fadeTo("fast", 0, function(){ elem.remove(); }); }</pre>
+      Example: selectionRemoved: function(elem){ elem.fadeTo("fast", 0, function(){ elem.remove(); }); }
 * **formatList**: callback function - Custom function that is run after all the data has been retrieved and before the results are put into the suggestion results list. This is here so you can modify what & how things show up in the suggestion results list.
 * **beforeRetrieve**: callback function - Custom function that is run right before the AJAX request is made, or before the local objected is searched. This is used to modify the search string before it is processed. So if a user entered "jim" into the AutoSuggest box, you can call this function to prepend their query with "guy_". Making the final query = "guy_jim". The search query is passed into this function. Example: beforeRetrieve: function(string){ return string; }
 * **retrieveComplete**: callback function - Custom function that is run after the ajax request has completed. The data object MUST be returned if this is used. Example: retrieveComplete: function(data){ return data; }
 * **resultClick**: callback function - Custom function that is run when a search result item is clicked. The data from the item that is clicked is passed into this callback function as 'data'.
-      <pre>Example: resultClick: function(data){ console.log(data); }</pre>
+      Example: resultClick: function(data){ console.log(data); }
 * **resultsComplete**: callback function - Custom function that is run when the suggestion results dropdown list is made visible. Will run after every search query.
 
 The formatList option will hand you 2 objects:
