@@ -67,3 +67,53 @@ Below is an example of formatList in action:
     var new_elem = elem.html("add/change stuff here, put image here, etc.");
     return new_elem;
 }</pre>
+
+How To Use It
+==============
+
+Obviously you need to make sure you have the latest jQuery library (at least 1.3) already loaded in your page. After that it's really simple, just add the following code to your page (make sure to wrap your code in jQuery's ready function):
+<pre>$(function(){
+    $("input[type=text]").autoSuggest(data);
+});</pre>
+
+The above line of code will apply AutoSuggest to all text type input elements on the page. Each one will be using the same set of Data. If you want to have multiple AutoSuggest fields on your page that use different sets of Data, make sure you select them separately. Like this:
+<pre>$(function(){
+	$("div.someClass input").autoSuggest(data);
+	$("#someID input").autoSuggest(other_data);
+});</pre>
+
+Doing the above will allow you to pass in different options and different Data sets.
+
+Below is an example of using AutoSuggest with a Data Object and other various options:
+<pre>var data = {items: [
+	{value: "21", name: "Mick Jagger"},
+	{value: "43", name: "Johnny Storm"},
+    {value: "46", name: "Richard Hatch"},
+    {value: "54", name: "Kelly Slater"},
+    {value: "55", name: "Rudy Hamilton"},
+    {value: "79", name: "Michael Jordan"}
+]};
+$("input[type=text]").autoSuggest(data.items, {selectedItemProp: "name", searchObjProps: "name"});</pre>
+
+Below is an example using a URL to gather the Data Object and other various options:
+
+$("input[type=text]").autoSuggest("http://mysite.com/path/to/script", {minChars: 2, matchCase: true});
+
+Please not that you MUST have an object property of "value" for each data item. (This is now configureable with the selectedValuesProp option). The "value" property will be stored (comma separated) in the hidden input field when chosen from the "suggestion" dropdown list. You can see an example of the "value" property being set for each data item in the example above. Typically the "value" property would contain the ID of the item, so you can send a list of "chosen" IDs to your server.
+
+Below is an example of how to process the data sent via AJAX to your server in PHP:
+<pre><?
+    $input = $_GET["q"];
+    $data = array();
+    // query your DataBase here looking for a match to $input
+    $query = mysql_query("SELECT * FROM my_table WHERE my_field LIKE '%$input%'");
+    while ($row = mysql_fetch_assoc($query)) {
+        $json = array();
+        $json['value'] = $row['id'];
+        $json['name'] = $row['username'];
+        $json['image'] = $row['user_photo'];
+        $data[] = $json;
+    }
+    header("Content-type: application/json");
+    echo json_encode($data);
+?></pre>
