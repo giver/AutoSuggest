@@ -97,7 +97,7 @@ $("input[type=text]").autoSuggest(data.items, {selectedItemProp: "name", searchO
 
 Below is an example using a URL to gather the Data Object and other various options:
 
-$("input[type=text]").autoSuggest("http://mysite.com/path/to/script", {minChars: 2, matchCase: true});
+<pre>$("input[type=text]").autoSuggest("http://mysite.com/path/to/script", {minChars: 2, matchCase: true});</pre>
 
 Please not that you MUST have an object property of "value" for each data item. (This is now configureable with the selectedValuesProp option). The "value" property will be stored (comma separated) in the hidden input field when chosen from the "suggestion" dropdown list. You can see an example of the "value" property being set for each data item in the example above. Typically the "value" property would contain the ID of the item, so you can send a list of "chosen" IDs to your server.
 
